@@ -6,8 +6,10 @@
 <title>Bitcoin Taproot Activation</title>
 <style type="text/css">
 body {
-	padding-top: 3em;
+	margin: 0;
+	padding-top: 5.75em;
 	text-align: justify;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 #menu {
 	margin: 0;
@@ -26,7 +28,7 @@ body {
 }
 #logo {
 	position: absolute;
-	height: 90%;
+	height: 100%;
 	padding: 0 1ex;
 	display: block;
 	float: left;
@@ -202,18 +204,22 @@ td {
 dd {
 	font-weight: bold;
 	text-decoration: underline;
+	margin: 0;
 }
 dt {
 	margin-bottom: 1em;
 	text-align: justify;
 }
 
+.clickable {
+  cursor: pointer;
+}
 </style>
 </head>
 <body>
 
 <div id="menu">
-<img src="taproot.svg" id="logo"/>
+<img src="taproot.svg" id="logo" width="250" />
 <ul>
 <li><a href="#about">About</a></li>
 <li><a href="#download">Download</a></li>
@@ -231,7 +237,7 @@ Please upgrade your Bitcoin node by <span style="text-decoration: underline;">Au
 </p>
 
 <h2 style="font-size: 150%;">Features</h2>
-<table style="max-width: 80%; margin: auto;"><tr>
+<table style="max-width: 75%; margin: auto;"><tr>
 <th class="feature_name">Improved Privacy:</th>
 <td class="feature_desc">Taproot transactions usually look the same, even with advanced smart contracts or multiple signers.</td>
 </tr><tr>
@@ -392,7 +398,7 @@ break;
 }
 </script>
 
-<div style="width: 80%; margin: auto;">
+<div style="width: 75%; margin: auto;">
 <h2>Security notice</h2>
 <p>
 <strong>Please note:</strong>
@@ -408,40 +414,40 @@ You should ideally download the key from at least two independent sources and en
 <div style="clear: both;">&nbsp;</div>
 
 <span class="anchor" id="faq"></span>
-<div style="width: 80%; margin: auto; text-align: center; font-size: 150%;">
+<div style="width: 75%; margin: auto; text-align: center; font-size: 150%;">
 <h2 style="font-size: 200%;">FAQ</h2>
 
 <h3 style="font-size: 120%">Taproot Itself</h3>
 <dl>
 
-<dd><span class="anchor" id="faq_privacy"></span>How does Taproot improve privacy?</dd>
+<dd class="clickable"><span class="anchor" id="faq_privacy"></span>How does Taproot improve privacy?</dd>
 <dt>First, "Schnorr" signatures allow making multiple signers indistinguishable from a single signer. Using advanced math, the digital signatures of all relevant parties can be added together to produce a single signature valid for the transaction. The coins' key can also optionally be made to commit to a smart contract (one or more), in a manner which is undistinguishable unless the recipients wish to reveal it. Since the outcome of smart contracts is well-defined, ordinarily there is no need to reveal it because both parties can see the outcome and simply agree, therefore utilitising a 2-of-2 multiple-signer option instead.</dt>
 
-<dd><span class="anchor" id="faq_efficiency"></span>How is Taproot more efficient?</dd>
+<dd class="clickable"><span class="anchor" id="faq_efficiency"></span>How is Taproot more efficient?</dd>
 <dt>Since Bitcoin nodes typically only need to verify a single digital signature for each transaction (<a href="#faq_privacy">see above question on privacy for details on how this is achieved</a>) instead of potentially many, not only do transactions require less high-cost blockchain space, but they also reduce the overall load required to run a node. Additionally, thanks to the ability to add "Schnorr" signatures together, verification can be further optimised by adding all the signatures in the block and verifying them all together once.</dt>
 
-<dd><span class="anchor" id="faq_upgradable"></span>Is what way is Taproot upgradable?</dd>
+<dd class="clickable"><span class="anchor" id="faq_upgradable"></span>Is what way is Taproot upgradable?</dd>
 <dt>Taproot keys represent a number of multiple-signer combinations as well as one or more smart contracts. Each smart contract specifies a version number, which future upgrades can define to provide a new smart contract language or extensions, while still using the same overall Taproot format (including privacy benefits and being generally indistinguishable from older Taproot transactions and smart contracts).</dt>
 
-<dd><span class="anchor" id="faq_optin"></span>What makes Taproot opt-in?</dd>
+<dd class="clickable"><span class="anchor" id="faq_optin"></span>What makes Taproot opt-in?</dd>
 <dt>While all protocol upgrades for Bitcoin require community involvement via running software, and therefore all nodes must upgrade to retain their full security, Taproot does not modify any existing rules of Bitcoin, only adds new ones to the previously reserved and unusable "witness version 1" (not to be confused with the existing "witness version 0" defined by Segwit in 2017). Therefore, old nodes will remain compatible (with security comparable to light wallets), existing bitcoins in circulation today are entirely unaffected, and nobody needs to use Taproot's new features until and unless they choose to.</dt>
 
 </dl>
 <h3 style="font-size: 120%">Activation Process</h3>
 <dl>
 
-<dd><span class="anchor" id="faq_decision"></span>Who decided to activate Taproot?</dd>
+<dd class="clickable"><span class="anchor" id="faq_decision"></span>Who decided to activate Taproot?</dd>
 <dt>Taproot was first proposed to the community in 2018, specifics finished in early 2020, and review completed over several months into late 2020. During this time and thereafter, no serious objections to the proposal have been raised, and general sentiment observed in the community has been positive. Therefore, this software has been released to the community with the assumption that <strong>there is a general consensus for activating Taproot</strong>. However, no mere software release can actually change the Bitcoin protocol, and the final activation can occur only by Bitcoin users adopting this (or compatible) software.</dt>
 
-<dd><span class="anchor" id="faq_opposed"></span>What if I oppose Taproot?</dd>
+<dd class="clickable"><span class="anchor" id="faq_opposed"></span>What if I oppose Taproot?</dd>
 <dt>The good news is that you do not need to use it (Taproot is an opt-in feature). The bad news is that a lone objection this late is not likely to change anything others do unless it has a very good argument. However, if you do indeed have a good argument, please <a href="https://lists.linuxfoundation.org/mailman/listinfo/bitcoin-dev">e-mail it to the Bitcoin development mailing list</a> ASAP. Also note that so long as the rest of the community proceeds toward activation, it will still activate, and you will need to upgrade yourself to retain full security. If your objection is firm enough, regardless of reason, you can, however, create or support a counter-activation to reject activation of Taproot by making blocks with bit 2 invalid before they reach 90% (see BIP 8 for details).</dt>
 
-<dd><span class="anchor" id="faq_whyupgrade"></span>Why do I need to upgrade for Taproot?</dd>
+<dd class="clickable"><span class="anchor" id="faq_whyupgrade"></span>Why do I need to upgrade for Taproot?</dd>
 <dt>Bitcoin is a decentralised system, with the rules and security enforced by its users. Without an ecnomic majority of users enforcing the new Taproot rules, it cannot be safely used by anyone.</dt>
-<dd><span class="anchor" id="faq_justminers"></span>Do only miners need to upgrade?</dd>
+<dd class="clickable"><span class="anchor" id="faq_justminers"></span>Do only miners need to upgrade?</dd>
 <dt>No. Miners play an important role in Bitcoin by preventing "double spending", but the protocol is primarily enforced by non-miners.</dt>
 
-<dd><span class="anchor" id="faq_minersrole"></span>What role do miners have in activating Taproot?</dd>
+<dd class="clickable"><span class="anchor" id="faq_minersrole"></span>What role do miners have in activating Taproot?</dd>
 <dt>In order to ensure all users have upgraded, softforks typically need a long period of time before activation - over a year (2022 August 6th in this case). However, so long as a significant majority of users have upgraded, the network security overall can be ensured, while miners can be entrusted with the protection of only the remaining minority who need more time. Therefore, if miners upgrade sooner, a shorter time period can be used 6 months (for Taproot, 2021 August 20th).</dt>
 
 </dl>
@@ -476,7 +482,7 @@ function prep_faq() {
 		dd.onclick = faq_showhide;
 		dd.classList.add('clickable');
 	}
-	
+
 	window.onhashchange = faq_show_anchor;
 }
 prep_faq();
@@ -486,7 +492,7 @@ prep_faq();
 <div style="clear: both;">&nbsp;</div>
 
 <span class="anchor" id="supporters"></span>
-<div style="width: 80%; margin: auto; text-align: center;">
+<div style="width: 75%; margin: auto; text-align: center;">
 <h2 style="font-size: 300%;">Supporters</h2>
 <p style="font-size: 150%">
 	The entire community seems to support Taproot, but the following have indicated that they are already or will soon be running Taproot-activating Bitcoin node software in production:
@@ -506,7 +512,7 @@ prep_faq();
 
 <span class="anchor" id="details"></span>
 <div style="position: absolute; height: calc(100% - 4em);">&nbsp;</div><!-- ensure #details always shows at the top -->
-<div style="max-width: 80%; width: 80ex; margin: auto;">
+<div style="max-width: 75%; width: 80ex; margin: auto;">
 <h2 style="font-size: 300%;">Technical details</h2>
 <table style="font-size: 150%">
 <tr><th>Type:</th><td>softfork</td></tr>
