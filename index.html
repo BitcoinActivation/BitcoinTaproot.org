@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<link rel="shortcut icon" href="favicon.ico" />
+<title>Bitcoin Taproot Activation</title>
+<style type="text/css">
+body {
+	padding-top: 3em;
+	text-align: justify;
+}
+#menu {
+	margin: 0;
+	display: block;
+	background-color: black;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	padding: 0;
+	text-align: center;
+	border-bottom: 1px solid black;
+}
+.anchor {
+	position: relative;
+	top: -5em;
+}
+#logo {
+	position: absolute;
+	height: 90%;
+	padding: 0 1ex;
+	display: block;
+	float: left;
+}
+#menu ul {
+	margin: 0 calc(192px + 2ex);
+	list-style-type: none;
+}
+#menu li {
+	display: inline-block;
+	text-transform: uppercase;
+	font-weight: bold;
+	margin: 0;
+}
+#menu li a {
+	display: inline-block;
+	margin: 1em;
+	padding: 0.5em;
+	border-radius: 0.5em;
+	color: white;
+	text-decoration: none;
+}
+#menu li a:hover {
+	background-color: white;
+	color: black;
+}
+
+/* mainbutton style:
+	Copyright 2013 - 2016 The Bitcoin.org Project.
+	Copyright 2017 The BitcoinCore.org Project.
+	Licensed under the MIT License (MIT) available on http://opensource.org/licenses/MIT
+*/
+.mainbutton{
+        text-align:center;
+}
+.mainbutton a,
+.mainbutton a:link,
+.mainbutton a:visited,
+.mainbutton a:active{
+        font-family:'Ubuntu', sans-serif;
+        font-weight:400;
+        font-size:150%;
+        text-shadow:0 2px 6px rgba(0,0,0,0.6);
+        text-align:left;
+        display:inline-block;
+        background-color:#2c6fad;
+        border:1px solid #20598f;
+        background-image:-o-linear-gradient(bottom, #20598f 14%, #2c6fad 70%);
+        background-image:-moz-linear-gradient(bottom, #20598f 14%, #2c6fad 70%);
+        background-image:-webkit-linear-gradient(bottom, #20598f 14%, #2c6fad 70%);
+        background-image:-ms-linear-gradient(bottom, #20598f 14%, #2c6fad 70%);
+        background-image:linear-gradient(bottom, #20598f 14%, #2c6fad 70%);
+        color:#fff;
+        padding:15px 20px 15px 8px;
+        /* margin:40px 0 40px 0; */
+        margin: 1ex 0;
+        -webkit-border-radius:12px;
+        -moz-border-radius:12px;
+        border-radius:12px;
+}
+.mainbutton a:hover{
+        background-image:none;
+        color:#fff;
+}
+.mainbutton img{
+        height:42px;
+        width:42px;
+        margin-right: 8px;
+        display: inline-block;
+        vertical-align: middle;
+}
+.mainbutton span{
+        display: inline-block;
+        vertical-align: middle;
+}
+.signaturebutton a,
+.signaturebutton a:link,
+.signaturebutton a:visited,
+.signaturebutton a:active {
+	padding: 7px 10px;
+	background-color:#6fad2c;
+	border:1px solid #598f20;
+	background-image:-o-linear-gradient(bottom, #598f20 14%, #6fad2c 70%);
+	background-image:-moz-linear-gradient(bottom, #598f20 14%, #6fad2c 70%);
+	background-image:-webkit-linear-gradient(bottom, #598f20 14%, #6fad2c 70%);
+	background-image:-ms-linear-gradient(bottom, #598f20 14%, #6fad2c 70%);
+	background-image:linear-gradient(bottom, #598f20 14%, #6fad2c 70%);
+}
+.signaturebutton img {
+	height:32px;
+	width:32px;
+}
+.advancedbutton a,
+.advancedbutton a:link,
+.advancedbutton a:visited,
+.advancedbutton a:active {
+	padding: 7px 10px;
+	background-color:#ad6f2c;
+	border:1px solid #8f5920;
+	background-image:-o-linear-gradient(bottom, #8f5920 14%, #ad6f2c 70%);
+	background-image:-moz-linear-gradient(bottom, #8f5920 14%, #ad6f2c 70%);
+	background-image:-webkit-linear-gradient(bottom, #8f5920 14%, #ad6f2c 70%);
+	background-image:-ms-linear-gradient(bottom, #8f5920 14%, #ad6f2c 70%);
+	background-image:linear-gradient(bottom, #8f5920 14%, #ad6f2c 70%);
+}
+
+h2 {
+	text-align: center;
+	font-size: 150%;
+}
+h3 {
+	text-align: center;
+}
+
+#other_downloads {
+	margin: auto;
+	border-radius: 1ex;
+	padding: 2ex;
+	width: 40ex;
+}
+.download_item {
+	text-align: center;
+	border: 1px dotted #000080;
+	margin-top: 1ex;
+	font-weight: bold;
+	clear: both;
+}
+.download_item a,
+.download_item a:link,
+.download_item a:visited,
+.download_item a:active {
+	display: inline-block;
+	text-align: left;
+	color: black;
+}
+.download_item img {
+	display: inline-block;
+	vertical-align: middle;
+	height: 3em;
+	margin-right: 8px;
+	padding-right: 1ex;
+}
+.download_item span {
+	display: inline-block;
+	vertical-align: middle;
+	font-size: 200%;
+}
+.archs {
+	width: 30ex;
+	margin: auto;
+}
+
+.hide {
+	display: none;
+}
+
+#features {
+	clear: both;
+}
+
+th {
+	text-align: right;
+	vertical-align: top;
+	padding-right: 1ex;
+}
+td {
+	vertical-align: top;
+}
+.feature_name {
+	width: 19ex;
+}
+
+dd {
+	font-weight: bold;
+	text-decoration: underline;
+}
+dt {
+	margin-bottom: 1em;
+	text-align: justify;
+}
+
+</style>
+</head>
+<body>
+
+<div id="menu">
+<img src="taproot.svg" id="logo"/>
+<ul>
+<li><a href="#about">About</a></li>
+<li><a href="#download">Download</a></li>
+<li><a href="#faq">FAQ</a></li>
+<li><a href="#supporters">Supporters</a></li>
+<li><a href="#details">Technical Details</a></li>
+</ul>
+</div>
+
+<span class="anchor" id="about"></span>
+<div style="font-size: 200%;">
+<p style="text-align: center; font-family: sans-serif;">
+Taproot is the next major upgrade for the Bitcoin protocol<br>
+Please upgrade your Bitcoin node by <span style="text-decoration: underline;">August 20th</span>!
+</p>
+
+<h2 style="font-size: 150%;">Features</h2>
+<table style="max-width: 80%; margin: auto;"><tr>
+<th class="feature_name">Improved Privacy:</th>
+<td class="feature_desc">Taproot transactions usually look the same, even with advanced smart contracts or multiple signers.</td>
+</tr><tr>
+<th class="feature_name">Better Efficiency:</th>
+<td class="feature_desc">"Schnorr" signatures are used to reduce the data usage and cost of both simple and complex transactions.</td>
+</tr><tr>
+<th class="feature_name">Upgradable:</th>
+<td class="feature_desc">Future improvements to Bitcoin can be cleanly made Taproot-compatible.</td>
+</tr><tr>
+<th class="feature_name">Opt-in Usage:</th>
+<td class="feature_desc">Current Bitcoin transactions continue to work the same.</td>
+</tr></table>
+</div>
+
+<div style="clear: both;">&nbsp;</div>
+
+<span class="anchor" id="download"></span>
+<div style="position: absolute; height: calc(100% - 4em);">&nbsp;</div><!-- ensure #download always shows at the top -->
+<div>
+	<h2 style="margin-bottom: 0; font-size: 300%;">
+		Bitcoin Core 0.21.0 with Taproot
+	</h2>
+
+<div class="mainbutton" id="download_win64">
+	<a href="files/0.21.x/0.21.0.taproot20210225/bitcoin-0.21.0.taproot20210225-win64-setup-unsigned.exe">
+		<img src="images/but_windows.svg" alt="" /><span>Download Bitcoin Core with Taproot for Windows</span>
+	</a>
+</div>
+<div class="mainbutton" id="download_macos">
+	<a href="files/0.21.x/0.21.0.taproot20210225/bitcoin-0.21.0.taproot20210225-osx-unsigned.dmg">
+		<img src="images/but_mac.svg" alt="" /><span>Download Bitcoin Core with Taproot for macOS</span>
+	</a>
+</div>
+<div class="mainbutton hide" id="download_ubuntu">
+	<a href="https://launchpad.net/~luke-jr/+archive/ubuntu/bitcoincore-taproot">
+		<img src="images/but_ubuntu.svg" alt="" /><span>Install Bitcoin Core with Taproot for Ubuntu</span>
+	</a>
+</div>
+
+<div class="mainbutton signaturebutton" id="download_signature">
+	<a href="files/0.21.x/0.21.0.taproot20210225/SHA256SUMS.asc">
+		<img src="images/but_signature.svg" alt="" /><span>Download digital signatures</span>
+	</a>
+</div>
+
+<div class="mainbutton advancedbutton hide" id="download_other">
+	<a href="javascript:document.getElementById('other_downloads').classList.remove('hide'); document.getElementById('download_other').classList.add('hide');">
+		<span>Show other downloads (advanced)</span>
+	</a>
+</div>
+
+<div id="other_downloads">
+	<h2 style="margin-bottom: 0;">Other downloads (advanced)</h2>
+		<div class="download_item">
+			<a href="files/0.21.x/0.21.0.taproot20210225/bitcoin-0.21.0.taproot20210225-x86_64-linux-gnu.tar.gz">
+				<img class="os" src="/.icons/os/med_linux.png" alt="" /><span>Linux</span>
+			</a>
+			<table class="archs">
+				<tr><td>
+					<a href="files/0.21.x/0.21.0.taproot20210225/bitcoin-0.21.0.taproot20210225-x86_64-linux-gnu.tar.gz">x86_64</a>
+				</td><td>
+					<a href="files/0.21.x/0.21.0.taproot20210225/bitcoin-0.21.0.taproot20210225-i686-pc-linux-gnu.tar.gz">x86_32</a>
+				</td></tr>
+				<tr><td>
+					<a href="files/0.21.x/0.21.0.taproot20210225/bitcoin-0.21.0.taproot20210225-aarch64-linux-gnu.tar.gz">aarch64</a>
+				</td><td>
+					<a href="files/0.21.x/0.21.0.taproot20210225/bitcoin-0.21.0.taproot20210225-arm-linux-gnueabihf.tar.gz">arm</a>
+				</td></tr>
+				<tr><td>
+					<a href="files/0.21.x/0.21.0.taproot20210225/bitcoin-0.21.0.taproot20210225-powerpc64-linux-gnu.tar.gz">ppc64 BE</a>
+				</td><td>
+					<a href="files/0.21.x/0.21.0.taproot20210225/bitcoin-0.21.0.taproot20210225-powerpc64le-linux-gnu.tar.gz">ppc64 LE</a>
+				</td></tr>
+				<tr><td>
+					<a href="files/0.21.x/0.21.0.taproot20210225/bitcoin-0.21.0.taproot20210225-riscv64-linux-gnu.tar.gz">riscv64</a>
+				</td><td>
+					<a href="https://launchpad.net/~luke-jr/+archive/ubuntu/bitcoincore-taproot">Ubuntu PPA</a>
+				</td></tr>
+			</table>
+		</div>
+		<div class="download_item">
+			<a href="files/0.21.x/0.21.0.taproot20210225/bitcoin-0.21.0.taproot20210225-osx-unsigned.dmg">
+				<img class="os" src="/.icons/os/med_osx.png" alt="" /><span>macOS</span>
+			</a>
+			<table class="archs">
+				<tr><td>
+					<a href="files/0.21.x/0.21.0.taproot20210225/bitcoin-0.21.0.taproot20210225-osx-unsigned.dmg">dmg</a>
+				</td><td>
+					<a href="files/0.21.x/0.21.0.taproot20210225/bitcoin-0.21.0.taproot20210225-osx64.tar.gz">tar.gz</a>
+				</td></tr>
+			</table>
+		</div>
+		<div class="download_item">
+			<a href="files/0.21.x/0.21.0.taproot20210225/bitcoin-0.21.0.taproot20210225-win64-setup-unsigned.exe">
+				<img class="os" src="/.icons/os/med_win.png" alt="" /><span>Windows</span>
+			</a>
+			<table class="archs">
+				<tr><th colspan="2">
+					<a style="text-decoration: none" href="files/0.21.x/0.21.0.taproot20210225/bitcoin-0.21.0.taproot20210225-win64.zip">Install EXE</a>
+				</th></tr>
+				<tr><td>
+					<a href="files/0.21.x/0.21.0.taproot20210225/bitcoin-0.21.0.taproot20210225-win64-setup-unsigned.exe">x86_64</a>
+				</td><td>
+					<a href="files/0.21.x/0.21.0.taproot20210225/bitcoin-0.21.0.taproot20210225-win32-setup-unsigned.exe">x86_32</a>
+				</td></tr>
+				<tr><th colspan="2">
+					<a style="text-decoration: none" href="files/0.21.x/0.21.0.taproot20210225/bitcoin-0.21.0.taproot20210225-win64.zip">Portable ZIP</a>
+				</th></tr>
+				<tr><td>
+					<a href="files/0.21.x/0.21.0.taproot20210225/bitcoin-0.21.0.taproot20210225-win64.zip">x86_64</a>
+				</td><td>
+					<a href="files/0.21.x/0.21.0.taproot20210225/bitcoin-0.21.0.taproot20210225-win32.zip">x86_32</a>
+				</td></tr>
+			</table>
+		</div>
+		<div class="download_item">
+			<a href="https://github.com/BitcoinActivation/bitcoin/tree/v0.21.0.taproot20210225">
+			<img class="os" src="/.icons/os/med_opensource.svg" alt="" /><span>Source code</span>
+			</a>
+			<table class="archs">
+				<tr><td>
+					<a href="https://github.com/BitcoinActivation/bitcoin/tree/v0.21.0.taproot20210225">GitHub</a>
+				</td><td>
+					<a href="git://github.com/BitcoinActivation/bitcoin.git">git</a>
+				</td></tr>
+				<tr><td>
+					<a href="files/0.21.x/0.21.0.taproot20210225/bitcoin-0.21.0.taproot20210225.tar.gz">tar.gz</a>
+				</td><td>
+					<a href="files/0.21.x/0.21.0.taproot20210225/bitcoin-0.21.0.taproot20210225.patch">patch</a>
+				</td></tr>
+			</table>
+		</div>
+</div>
+
+<script>
+var os = 'windows64';
+if (navigator.userAgent.indexOf('Mac') != -1) var os = 'mac'
+else if (navigator.userAgent.indexOf('Android') != -1) os = 'android'
+else if (navigator.userAgent.indexOf('Linux') != -1) var os = 'linux64'
+else if (navigator.userAgent.indexOf('WOW64') != -1 || navigator.userAgent.indexOf('Win64') != -1) var os='windows64';
+document.getElementById('other_downloads').classList.add('hide');
+document.getElementById('download_other').classList.remove('hide');
+switch (os) {
+case 'android':
+	// Show default Windows + macOS
+break;
+case 'windows64':
+	document.getElementById('download_macos').classList.add('hide');
+break;
+case 'linux64':
+	document.getElementById('download_win64').classList.add('hide');
+	document.getElementById('download_macos').classList.add('hide');
+	document.getElementById('download_ubuntu').classList.remove('hide');
+break;
+case 'mac':
+	document.getElementById('download_win64').classList.add('hide');
+break;
+}
+</script>
+
+<div style="width: 80%; margin: auto;">
+<h2>Security notice</h2>
+<p>
+<strong>Please note:</strong>
+When installing this or any other app, you should verify your download is the authentic program, and not intercepted by a virus.
+Always verify the correct digital signature on any downloads to avoid malware.
+Bitcoin Core with Taproot is signed by ...TODO....
+You should ideally download the key from at least two independent sources and ensure they match.
+<strong><a href="https://medium.com/@lukedashjr/how-to-securely-install-bitcoin-9bfeca7d3b2a?source=bitcointaprootorg">Click here for a tutorial on how to verify the OpenPGP signature!</a></strong>
+</p>
+
+</div>
+
+<div style="clear: both;">&nbsp;</div>
+
+<span class="anchor" id="faq"></span>
+<div style="width: 80%; margin: auto; text-align: center; font-size: 150%;">
+<h2 style="font-size: 200%;">FAQ</h2>
+
+<h3 style="font-size: 120%">Taproot Itself</h3>
+<dl>
+
+<dd><span class="anchor" id="faq_privacy"></span>How does Taproot improve privacy?</dd>
+<dt>First, "Schnorr" signatures allow making multiple signers indistinguishable from a single signer. Using advanced math, the digital signatures of all relevant parties can be added together to produce a single signature valid for the transaction. The coins' key can also optionally be made to commit to a smart contract (one or more), in a manner which is undistinguishable unless the recipients wish to reveal it. Since the outcome of smart contracts is well-defined, ordinarily there is no need to reveal it because both parties can see the outcome and simply agree, therefore utilitising a 2-of-2 multiple-signer option instead.</dt>
+
+<dd><span class="anchor" id="faq_efficiency"></span>How is Taproot more efficient?</dd>
+<dt>Since Bitcoin nodes typically only need to verify a single digital signature for each transaction (<a href="#faq_privacy">see above question on privacy for details on how this is achieved</a>) instead of potentially many, not only do transactions require less high-cost blockchain space, but they also reduce the overall load required to run a node. Additionally, thanks to the ability to add "Schnorr" signatures together, verification can be further optimised by adding all the signatures in the block and verifying them all together once.</dt>
+
+<dd><span class="anchor" id="faq_upgradable"></span>Is what way is Taproot upgradable?</dd>
+<dt>Taproot keys represent a number of multiple-signer combinations as well as one or more smart contracts. Each smart contract specifies a version number, which future upgrades can define to provide a new smart contract language or extensions, while still using the same overall Taproot format (including privacy benefits and being generally indistinguishable from older Taproot transactions and smart contracts).</dt>
+
+<dd><span class="anchor" id="faq_optin"></span>What makes Taproot opt-in?</dd>
+<dt>While all protocol upgrades for Bitcoin require community involvement via running software, and therefore all nodes must upgrade to retain their full security, Taproot does not modify any existing rules of Bitcoin, only adds new ones to the previously reserved and unusable "witness version 1" (not to be confused with the existing "witness version 0" defined by Segwit in 2017). Therefore, old nodes will remain compatible (with security comparable to light wallets), existing bitcoins in circulation today are entirely unaffected, and nobody needs to use Taproot's new features until and unless they choose to.</dt>
+
+</dl>
+<h3 style="font-size: 120%">Activation Process</h3>
+<dl>
+
+<dd><span class="anchor" id="faq_decision"></span>Who decided to activate Taproot?</dd>
+<dt>Taproot was first proposed to the community in 2008, specifics finished in early 2020, and review completed over several months into late 2020. During this time and thereafter, no serious objections to the proposal have been raised, and general sentiment observed in the community has been positive. Therefore, this software has been released to the community with the assumption that <strong>there is a general consensus for activating Taproot</strong>. However, no mere software release can actually change the Bitcoin protocol, and the final activation can occur only by Bitcoin users adopting this (or compatible) software.</dt>
+
+<dd><span class="anchor" id="faq_opposed"></span>What if I oppose Taproot?</dd>
+<dt>The good news is that you do not need to use it (Taproot is an opt-in feature). The bad news is that a lone objection this late is not likely to change anything others do unless it has a very good argument. However, if you do indeed have a good argument, please <a href="https://lists.linuxfoundation.org/mailman/listinfo/bitcoin-dev">e-mail it to the Bitcoin development mailing list</a> ASAP. Also note that so long as the rest of the community proceeds toward activation, it will still activate, and you will need to upgrade yourself to retain full security. If your objection is firm enough, regardless of reason, you can, however, create or support a counter-activation to reject activation of Taproot by making blocks with bit 2 invalid before they reach 90% (see BIP 8 for details).</dt>
+
+<dd><span class="anchor" id="faq_whyupgrade"></span>Why do I need to upgrade for Taproot?</dd>
+<dt>Bitcoin is a decentralised system, with the rules and security enforced by its users. Without an ecnomic majority of users enforcing the new Taproot rules, it cannot be safely used by anyone.</dt>
+<dd><span class="anchor" id="faq_justminers"></span>Do only miners need to upgrade?</dd>
+<dt>No. Miners play an important role in Bitcoin by preventing "double spending", but the protocol is primarily enforced by non-miners.</dt>
+
+<dd><span class="anchor" id="faq_minersrole"></span>What role do miners have in activating Taproot?</dd>
+<dt>In order to ensure all users have upgraded, softforks typically need a long period of time before activation - over a year (2022 August 6th in this case). However, so long as a significant majority of users have upgraded, the network security overall can be ensured, while miners can be entrusted with the protection of only the remaining minority who need more time. Therefore, if miners upgrade sooner, a shorter time period can be used 6 months (for Taproot, 2021 August 20th).</dt>
+
+</dl>
+<script>
+function faq_showhide(o) {
+	document.getElementById('faq_' + o.currentTarget.faq_id).classList.toggle('hide');
+}
+function faq_show_anchor() {
+	var a = document.getElementById(document.location.hash.substring(1));
+	if ('undefined' != typeof a.parentNode.faq_id) {
+		document.getElementById('faq_' + a.parentNode.faq_id).classList.remove('hide');
+	}
+}
+function prep_faq() {
+	var ddlist = document.getElementsByTagName('dd');
+	var i;
+	for (i = 0; i < ddlist.length; ++i) {
+		var dd = ddlist[i];
+		var dt = dd.nextSibling;
+		while (!dt.tagName || dt.tagName.toLowerCase() != 'dt') {
+			dt = dt.nextSibling;
+		}
+		var a = dd.firstChild;
+		while (!a.className || a.className.toLowerCase() != 'anchor') {
+			a = a.nextSibling;
+		}
+		dt.id = "faq_" + i;
+		if ('#' + a.id != document.location.hash) {
+			dt.classList.add('hide');
+		}
+		dd.faq_id = i;
+		dd.onclick = faq_showhide;
+		dd.classList.add('clickable');
+	}
+	
+	window.onhashchange = faq_show_anchor;
+}
+prep_faq();
+</script>
+</div>
+
+<div style="clear: both;">&nbsp;</div>
+
+<span class="anchor" id="supporters"></span>
+<div style="width: 80%; margin: auto; text-align: center;">
+<h2 style="font-size: 300%;">Supporters</h2>
+<p style="font-size: 150%">
+	The entire community seems to support Taproot, but the following have indicated that they are already or will soon be running Taproot-activating Bitcoin node software in production:
+</p>
+<h3 style="font-size: 200%">Businesses</h3>
+<ul style="list-style: none; padding: 0;">
+<li><a href="TODO">Open an issue on GitHub to add to the list!</a></li>
+</ul>
+<h3 style="font-size: 200%">Community members</h3>
+<ul style="list-style: none; padding: 0;">
+<li><strong>Luke Dashjr</strong>, Bitcoin Core developer &amp; Bitcoin Knots maintainer</li>
+<li><a href="TODO">Open an issue on GitHub to add to the list!</a></li>
+</ul>
+</div>
+
+<div style="clear: both;">&nbsp;</div>
+
+<span class="anchor" id="details"></span>
+<div style="position: absolute; height: calc(100% - 4em);">&nbsp;</div><!-- ensure #details always shows at the top -->
+<div style="max-width: 80%; width: 80ex; margin: auto;">
+<h2 style="font-size: 300%;">Technical details</h2>
+<table style="font-size: 150%">
+<tr><th>Type:</th><td>softfork</td></tr>
+<tr><th>Specification:</th><td>
+	<a href="https://github.com/bitcoin/bips/blob/master/bip-0341.mediawiki">BIP 341 (witness)</a><br/>
+	<a href="https://github.com/bitcoin/bips/blob/master/bip-0342.mediawiki">BIP 342 (scripts)</a>
+</td></tr>
+<tr><th>Earliest activation:</th><td>697852 (2021 August 20th*)</td></tr>
+<tr><th>Latest activation:</th><td>760032 (2022 August 6th*)</td></tr>
+<tr><th>Activation method:</th><td><a href="https://github.com/bitcoin/bips/blob/master/bip-0008.mediawiki">BIP 8</a></td></tr>
+<tr><th>API name:</th><td>taproot</td></tr>
+<tr><th>Signal bit:</th><td>2</td></tr>
+<tr><th>Start Height:</th><td>693504</td></tr>
+<tr><th>Timeout Height:</th><td>745920</td></tr>
+<tr><th>Threshold:</th><td>90%</td></tr>
+<tr><th>Lockin On Timeout:</th><td>Yes</td></tr>
+</table>
+<p>* Activation is based on Bitcoin block height, so calendar dates are approximate</p>
+</div>
+
+</div>
+
+</body>
+</html>
