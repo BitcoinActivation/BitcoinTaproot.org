@@ -428,6 +428,9 @@ You should ideally download the key from at least two independent sources and en
 <dd><span class="anchor" id="faq_efficiency"></span>How is Taproot more efficient?</dd>
 <dt>Since Bitcoin nodes typically only need to verify a single digital signature for each transaction (<a href="#faq_privacy">see above question on privacy for details on how this is achieved</a>) instead of potentially many, not only do transactions require less high-cost blockchain space, but they also reduce the overall load required to run a node. Additionally, thanks to the ability to add "Schnorr" signatures together, verification can be further optimised by adding all the signatures in the block and verifying them all together once.</dt>
 
+<dd><span class="anchor" id="faq_multisig"></span>Is Taproot only for large multisigs?</dd>
+<dt>Taproot helps the projects that use multisig but it is more than few changes to multisig. <a href ="https://bitcoin.stackexchange.com/questions/103805/taproot-and-large-multisigs"> Read More</a></dt>
+
 <dd><span class="anchor" id="faq_upgradable"></span>Is what way is Taproot upgradable?</dd>
 <dt>Taproot keys represent a number of multiple-signer combinations as well as one or more smart contracts. Each smart contract specifies a version number, which future upgrades can define to provide a new smart contract language or extensions, while still using the same overall Taproot format (including privacy benefits and being generally indistinguishable from older Taproot transactions and smart contracts).</dt>
 
