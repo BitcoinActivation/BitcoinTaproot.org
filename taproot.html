@@ -456,6 +456,9 @@ You should ideally download the key from at least two independent sources and en
 <dd><span class="anchor" id="faq_minersrole"></span>What role do miners have in activating Taproot?</dd>
 <dt>In order to ensure all users have upgraded, softforks typically need a long period of time before activation - over a year (2022 October 28th in this case). However, so long as a significant majority of users have upgraded, the network security overall can be ensured, while miners can be entrusted with the protection of only the remaining minority who need more time. Therefore, if miners upgrade sooner, a shorter time period can be used 6 months (for Taproot, 2021 November 12th).</dt>
 
+<dd><span class="anchor" id="faq_uasf"></span>Is this a User-Activated SoftFork (UASF)?</dd>
+<dt>No. This activation uses BIP 8 to ensure a safe and clean activation coordinated by miners. It is therefore a Miner-Activated SoftFork (MASF). However, it does not give miners the additional power to veto Taproot, and should miners neglect to coordinate an early activation, will still activate Taproot during late 2022. In that fallback scenario, it is accurate to consider it to have become a User-Activated SoftFork (UASF). Miners have publicly indicated that they also support Taproot themselves, so it is expected that activation under the normal MASF routine should proceed smoothly, and no UASF fallback will be needed.</dt>
+
 </dl>
 <script>
 function faq_showhide(o) {
