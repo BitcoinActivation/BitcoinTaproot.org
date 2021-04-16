@@ -428,6 +428,16 @@ You should ideally download PGP keys from at least two independent sources and e
 <dt>No. This activation uses BIP 8 to ensure a safe and clean activation coordinated by miners. It is therefore a Miner-Activated SoftFork (MASF). However, it does not give miners the additional power to veto Taproot, and should miners neglect to coordinate an early activation, will still activate Taproot during late 2022. In that fallback scenario, it is accurate to consider it to have become a User-Activated SoftFork (UASF). Miners have publicly indicated that they also support Taproot themselves, so it is expected that activation under the normal MASF routine should proceed smoothly, and no UASF fallback will be needed.</dt>
 
 </dl>
+<h3 style="font-size: 120%">Taproot Client Software</h3>
+<dl>
+
+<dd><span class="anchor" id="faq_contributors"></span>Who maintains the Taproot Client software?</dd>
+<dt>The software code has been written and reviewed by several Bitcoin Core developers. The releases are, however, maintained by two community members, Bitcoin Mechanic and Shinobi. Luke Dashjr has helped advise and make sure things get done properly and safely.</dt>
+
+<dd><span class="anchor" id="faq_mainline"></span>How is the software different from regular Bitcoin Core?</dd>
+<dt>Unmodified Bitcoin Core includes the code to implement Taproot, but disabled. When Taproot activates, it will not enforce the new rules, and may fall out of consensus.<!-- Update 2021-04-??: Bitcoin Core 0.21.1 was just released that will remain in consensus if and only if miners signal within the first 3 months. It is still recommended to run the dedicated Taproot Client release. --></dt>
+
+</dl>
 <script>
 function faq_showhide(o) {
 	document.getElementById('faq_' + o.currentTarget.faq_id).classList.toggle('hide');
