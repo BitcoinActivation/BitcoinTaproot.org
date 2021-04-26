@@ -269,6 +269,11 @@ Please upgrade your Bitcoin node by <span style="text-decoration: underline;">No
 		<img src="images/but_mac.svg" alt="" /><span>Download Bitcoin Core-based Taproot Client for macOS</span>
 	</a>
 </div>
+<div class="mainbutton hide" id="download_ubuntu">
+	<a href="https://launchpad.net/~luke-jr/+archive/ubuntu/bitcoincore-taproot">
+		<img src="images/but_ubuntu.svg" alt="" /><span>Install Bitcoin Core-based Taproot Client for Ubuntu</span>
+	</a>
+</div>
 
 <div class="mainbutton signaturebutton" id="download_signature">
 	<a href="https://github.com/BitcoinActivation/bitcoin/releases/download/v0.21.0-taproot0.1/SHA256SUMS.asc">
@@ -298,6 +303,9 @@ Please upgrade your Bitcoin node by <span style="text-decoration: underline;">No
 					<a href="https://github.com/BitcoinActivation/bitcoin/releases/download/v0.21.0-taproot0.1/bitcoin-0.21.0-taproot0.1-aarch64-linux-gnu.tar.gz">aarch64</a>
 				</td><td>
 					<a href="https://github.com/BitcoinActivation/bitcoin/releases/download/v0.21.0-taproot0.1/bitcoin-0.21.0-taproot0.1-arm-linux-gnueabihf.tar.gz">arm</a>
+				</td></tr>
+				<tr><td colspan="2">
+					<a href="https://launchpad.net/~luke-jr/+archive/ubuntu/bitcoincore-taproot">Ubuntu PPA</a>
 				</td></tr>
 			</table>
 		</div>
@@ -360,7 +368,9 @@ case 'windows64':
 	document.getElementById('download_macos').classList.add('hide');
 break;
 case 'linux64':
-	// Show default Windows + macOS for now
+	document.getElementById('download_win64').classList.add('hide');
+	document.getElementById('download_macos').classList.add('hide');
+	document.getElementById('download_ubuntu').classList.remove('hide');
 break;
 case 'mac':
 	document.getElementById('download_win64').classList.add('hide');
