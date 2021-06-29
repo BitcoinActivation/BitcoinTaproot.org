@@ -420,22 +420,22 @@ You should ideally download PGP keys from at least two independent sources and e
 <dt>Taproot was first proposed to the community in 2018, specifics finished in early 2020, and review completed over several months into late 2020. During this time and thereafter, no serious objections to the proposal have been raised, and general sentiment observed in the community has been positive. Therefore, this software has been released to the community with the assumption that <strong>there is a general consensus for activating Taproot</strong>. However, no mere software release can actually change the Bitcoin protocol, and the final activation can occur only by Bitcoin users adopting this (or compatible) software.</dt>
 
 <dd><span class="anchor" id="faq_opposed"></span>What if I oppose Taproot?</dd>
-<dt>The good news is that you do not need to use it (Taproot is an opt-in feature). The bad news is that a lone objection this late is not likely to change anything others do unless it has a very good argument. However, if you do indeed have a good argument, please <a href="https://lists.linuxfoundation.org/mailman/listinfo/bitcoin-dev">e-mail it to the Bitcoin development mailing list</a> ASAP. Also note that so long as the rest of the community proceeds toward activation, it will still activate, and you will need to upgrade yourself to retain full security. If your objection is firm enough, regardless of reason, you can, however, create or support a counter-activation to reject activation of Taproot by making blocks with bit 2 invalid before they reach 90% (see BIP 8 for details).</dt>
+<dt>The good news is that you do not need to use it (Taproot is an opt-in feature). The bad news is that a lone objection this late is not likely to change anything others do unless it has a very good argument. However, if you do indeed have a good argument, please <a href="https://lists.linuxfoundation.org/mailman/listinfo/bitcoin-dev">e-mail it to the Bitcoin development mailing list</a> ASAP. Also note that so long as the rest of the community proceeds toward activation, it will still activate, and you will need to upgrade yourself to retain full security. If your objection is firm enough, regardless of reason, you can, however, create or support a counter-proposal to prevent activation of Taproot (see BIP 8 for details).</dt>
 
 <dd><span class="anchor" id="faq_whyupgrade"></span>Why do I need to upgrade for Taproot?</dd>
 <dt>Bitcoin is a decentralised system, with the rules and security enforced by its users. Without an economic majority of users enforcing the new Taproot rules, it cannot be safely used by anyone.</dt>
 
 <dd><span class="anchor" id="faq_nonupgraderisks"></span>What happens if I don't upgrade in time?</dd>
-<dt>As early as November 12th, it is possible that Taproot may become active. If you have not upgraded before Taproot activates, or 2022 October 14th, whichever is earlier, your node will no longer be fully secure and you may become vulnerable to certain attacks. However, Taproot will only activate early (prior to 2022 October 14th) if miners are prepared to protect slow upgraders from these attacks. In such a situation, your node is trusting and relying on miners until you do upgrade.</dt>
+<dt>If you have not upgraded before Taproot activates (around November 12th), your node will no longer be fully secure and you may become vulnerable to certain attacks. In such a case, your node would be trusting and relying on miners to protect you until you do upgrade.</dt>
 
 <dd><span class="anchor" id="faq_justminers"></span>Do only miners need to upgrade?</dd>
 <dt>No. Miners play an important role in Bitcoin by preventing "double spending", but the protocol is primarily enforced by non-miners.</dt>
 
 <dd><span class="anchor" id="faq_minersrole"></span>What role do miners have in activating Taproot?</dd>
-<dt>In order to ensure all users have upgraded, softforks typically need a long period of time before activation - over a year (2022 October 28th in this case). However, so long as a significant majority of users have upgraded, the network security overall can be ensured, while miners can be entrusted with the protection of only the remaining minority who need more time. Therefore, if miners upgrade sooner, a shorter time period can be used 6 months (for Taproot, 2021 November 12th).</dt>
+<dt>In order to ensure all users have upgraded, softforks typically need a long period of time before activation - over a year. However, so long as a significant majority of users have upgraded, the network security overall can be ensured, while miners can be entrusted with the protection of only the remaining minority who need more time. Therefore, if miners upgrade sooner, a shorter time period can be used.</dt>
 
 <dd><span class="anchor" id="faq_uasf"></span>Is this a User-Activated SoftFork (UASF)?</dd>
-<dt>No. This activation uses BIP 8 to ensure a safe and clean activation coordinated by miners. It is therefore a Miner-Activated SoftFork (MASF). However, it does not give miners the additional power to veto Taproot, and should miners neglect to coordinate an early activation, will still activate Taproot during late 2022. In that fallback scenario, it is accurate to consider it to have become a User-Activated SoftFork (UASF). Miners have publicly indicated that they also support Taproot themselves, so it is expected that activation under the normal MASF routine should proceed smoothly, and no UASF fallback will be needed.</dt>
+<dt>No. This activation uses BIP 8 to ensure a safe and clean activation coordinated by miners. It is therefore a Miner-Activated SoftFork (MASF).</dt>
 
 </dl>
 <h3 style="font-size: 120%">Taproot Client Software</h3>
@@ -445,7 +445,7 @@ You should ideally download PGP keys from at least two independent sources and e
 <dt>The software code has been written and reviewed by several Bitcoin Core developers. The releases are, however, maintained by three community members, Bitcoin Mechanic, Shinobi, and stortz. Luke Dashjr has helped advise and make sure things get done properly and safely.</dt>
 
 <dd><span class="anchor" id="faq_mainline"></span>How is the software different from regular Bitcoin Core?</dd>
-<dt>Unmodified Bitcoin Core includes the code to implement Taproot, but disabled. When Taproot activates, it will not enforce the new rules, and may fall out of consensus. Update 2021-05-01: An alternate client being called simply "Bitcoin Core 0.21.1" was just released that will remain in consensus if and only if miners signal within the first 3 months. It is still recommended to run the dedicated Taproot Client release.</dt>
+<dt>Unmodified Bitcoin Core includes the code to implement Taproot, but disabled. When Taproot activates, it will not enforce the new rules, and may fall out of consensus. Update 2021-06-29: Bitcoin Core 0.21.1 has been released with Taproot activation enabled. It is still recommended to run the dedicated Taproot Client release if you wish to show your support explicitly, but upgrading to 0.21.1 or later is sufficient to remain secure.</dt>
 
 </dl>
 <script>
@@ -496,17 +496,13 @@ prep_faq();
 <tr><th>Type:</th><td>softfork</td></tr>
 <tr><th>Specification:</th><td>
 	<a href="https://github.com/bitcoin/bips/blob/master/bip-0341.mediawiki">BIP 341 (witness)</a><br/>
-	<a href="https://github.com/bitcoin/bips/blob/master/bip-0342.mediawiki">BIP 342 (scripts)</a>
+	<a href="https://github.com/bitcoin/bips/blob/master/bip-0342.mediawiki">BIP 342 (scripts)</a><br/>
+	<a href="https://github.com/bitcoin/bips/blob/master/bip-0343.mediawiki">BIP 343 (activation)</a>
 </td></tr>
-<tr><th>Earliest activation:</th><td>709632 (2021 November 12th*)</td></tr>
-<tr><th>Latest activation:</th><td>762048 (2022 November 11th*)</td></tr>
+<tr><th>Activation:</th><td>709632 (2021 November 12th*)</td></tr>
 <tr><th>Activation method:</th><td><a href="https://github.com/bitcoin/bips/blob/master/bip-0008.mediawiki">BIP 8</a></td></tr>
 <tr><th>API name:</th><td>taproot</td></tr>
 <tr><th>Signal bit:</th><td>2</td></tr>
-<tr><th>Start Height:</th><td>681408 (2021 April 30th)</td></tr>
-<tr><th>Timeout Height:</th><td>760032 (2022 October 28th)</td></tr>
-<tr><th>Threshold:</th><td>90%</td></tr>
-<tr><th>Lockin On Timeout:</th><td>Yes</td></tr>
 </table>
 <p>* Activation is based on Bitcoin block height, so calendar dates are approximate</p>
 </div>
